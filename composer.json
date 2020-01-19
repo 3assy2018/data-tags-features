@@ -2,8 +2,7 @@
     "name": "3assy2018/data-tags-features",
     "type": "library",
     "require": {
-        "simplesoftwareio/simple-qrcode": "^2.0",
-        "illuminate/support": "^6.8"
+        "simplesoftwareio/simple-qrcode": "^2.0"
     },
     "license": "MIT",
     "authors": [
