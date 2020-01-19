@@ -11,5 +11,17 @@
             "name": "Mohamed",
             "email": "3assy@diva-lab.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "M3assy\\DataTags\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "M3assy\\DataTags\\DataTagsServiceProvider"
+            ]
+        }
+    }
 }
