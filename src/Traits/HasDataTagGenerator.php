@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use M3assy\DataTags\Facades\DataTag;
 use M3assy\DataTags\Models\DataTagGroup;
+use M3assy\DataTags\Models\DataTag as DataTagModel;
 
 trait HasDataTagGenerator
 {
@@ -34,9 +35,7 @@ trait HasDataTagGenerator
         $dataGroup = $this->dataTagsGroups()->create($mappedInputs);
 
         for($numberOfTags = 0; $numberOfTags < (int) $mappedInputs["number"]; $numberOfTags++){
-            $token = hash_hmac("md5",
-                $mappedInputs["name"].$mappedInputs["number"].$mappedInputs["expiration_date"].microtime(),
-                config("datatags.file_hmac_key"));
+            $token = DataTagModel::generateCode(4);
             $output = $dataTagClient->generate(($prefix ?? config('datatags.default_prefix'))."/".$token, $generationType);
             $dataOutputFormat = config("datatags.generators.".$type.".config.format");
             Storage::disk("local")

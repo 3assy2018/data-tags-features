@@ -2,6 +2,7 @@
     "name": "3assy2018/data-tags-features",
     "type": "library",
     "require": {
+        "gladcodes/keygen": "^1.1",
         "simplesoftwareio/simple-qrcode": "^2.0"
     },
     "license": "MIT",
