@@ -20,7 +20,7 @@ class DataTag extends Model
     }
 
     public static function isCodeUnique($code){
-        $codeSearch = static::where('code',$code);
+        $codeSearch = static::where('token',$code);
         return ($codeSearch->exists()) ? false : true;
     }
 
