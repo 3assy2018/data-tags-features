@@ -38,11 +38,10 @@ trait HasDataTagGenerator
             $token = DataTagModel::generateCode(4);
             $output = $dataTagClient->generate(($prefix ?? config('datatags.default_prefix'))."/".$token, $generationType);
             $dataOutputFormat = config("datatags.generators.".$type.".config.format");
-            Storage::disk("local")
+            Storage::disk("public")
                 ->put(config("datatags.default_path")."/".$directory."/".$token.".".$dataOutputFormat, $output);
             $tokens[]["token"] = $token;
         }
-
         $dataGroup->tags()->createMany($tokens);
         return $dataGroup->fresh()->load("tags");
     }
