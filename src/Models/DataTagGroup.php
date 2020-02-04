@@ -30,7 +30,7 @@ class DataTagGroup extends Model
     {
         $path = config('datatags.default_path');
         $path = $path[strlen($path) - 1] == "/" ? $path . $this->directory : $path . "/" . $this->directory;
-        Storage::disk('public')->deleteDirectory($path);
+        Storage::disk('local')->deleteDirectory($path);
         return parent::delete();
     }
 }
